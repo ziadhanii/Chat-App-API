@@ -7,6 +7,14 @@
     <Project Path="ChatApp.Application/ChatApp.Application.csproj" />
     <Project Path="ChatApp.Domain/ChatApp.Domain.csproj" />
   </Folder>
+  <Folder Name="/src/Core/Features/" />
+  <Folder Name="/src/Core/Features/Messages/" />
+  <Folder Name="/src/Core/Features/Messages/Handler/" />
+  <Folder Name="/src/Core/Features/Messages/Handler/Command/" />
+  <Folder Name="/src/Core/Features/Messages/Handler/Query/" />
+  <Folder Name="/src/Core/Features/Messages/Request/" />
+  <Folder Name="/src/Core/Features/Messages/Request/Command/" />
+  <Folder Name="/src/Core/Features/Messages/Request/Query/" />
   <Folder Name="/src/Infrastructure/">
     <Project Path="ChatApp.Infrastructure/ChatApp.Infrastructure.csproj" />
     <Project Path="ChatApp.Persistence/ChatApp.Persistence.csproj" />
