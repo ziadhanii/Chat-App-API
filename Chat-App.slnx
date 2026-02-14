@@ -1,22 +1,14 @@
 <Solution>
-  <Folder Name="/src/" />
-  <Folder Name="/src/API/">
-    <Project Path="ChatApp.API/ChatApp.API.csproj" />
-  </Folder>
-  <Folder Name="/src/Core/">
-    <Project Path="ChatApp.Application/ChatApp.Application.csproj" />
-    <Project Path="ChatApp.Domain/ChatApp.Domain.csproj" />
-  </Folder>
-  <Folder Name="/src/Core/Features/" />
-  <Folder Name="/src/Core/Features/Messages/" />
-  <Folder Name="/src/Core/Features/Messages/Handler/" />
-  <Folder Name="/src/Core/Features/Messages/Handler/Command/" />
-  <Folder Name="/src/Core/Features/Messages/Handler/Query/" />
-  <Folder Name="/src/Core/Features/Messages/Request/" />
-  <Folder Name="/src/Core/Features/Messages/Request/Command/" />
-  <Folder Name="/src/Core/Features/Messages/Request/Query/" />
-  <Folder Name="/src/Infrastructure/">
-    <Project Path="ChatApp.Infrastructure/ChatApp.Infrastructure.csproj" />
-    <Project Path="ChatApp.Persistence/ChatApp.Persistence.csproj" />
-  </Folder>
+    <Folder Name="/src/" />
+    <Folder Name="/src/API/">
+        <Project Path="src/API/ChatApp.API/ChatApp.API.csproj" />
+    </Folder>
+    <Folder Name="/src/Core/">
+        <Project Path="src/Core/ChatApp.Application/ChatApp.Application.csproj" />
+        <Project Path="src/Core/ChatApp.Domain/ChatApp.Domain.csproj" />
+    </Folder>
+    <Folder Name="/src/Infrastructure/">
+        <Project Path="src/Infrastructure/ChatApp.Infrastructure/ChatApp.Infrastructure.csproj" />
+        <Project Path="src/Infrastructure/ChatApp.Persistence/ChatApp.Persistence.csproj" />
+    </Folder>
 </Solution>
