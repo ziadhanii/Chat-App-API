@@ -1,4 +1,4 @@
-﻿namespace ChatApp.Domain.Entities;
+﻿namespace ChatApp.Domain.Enums;
 
 public enum PresenceStatus
 {

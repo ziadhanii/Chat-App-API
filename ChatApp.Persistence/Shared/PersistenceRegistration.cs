@@ -1,10 +1,4 @@
-﻿using ChatApp.Domain.Entities;
-using ChatApp.Persistence.DatabaseContext;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-
-
-namespace ChatApp.Persistence.Shared;
+﻿namespace ChatApp.Persistence.Shared;
 
 public static class PersistenceRegistration
 {

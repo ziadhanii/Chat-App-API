@@ -1,5 +1,3 @@
-using ChatApp.Persistence.Shared;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();

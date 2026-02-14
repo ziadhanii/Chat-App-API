@@ -1,0 +1,6 @@
+﻿global using ChatApp.Domain.Entities;
+global using ChatApp.Persistence.DatabaseContext;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.DependencyInjection;

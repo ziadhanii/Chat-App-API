@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace ChatApp.Application.Shared;
+﻿namespace ChatApp.Application.Shared;
 
 public static class ApplicationServiceRegistration
 {
