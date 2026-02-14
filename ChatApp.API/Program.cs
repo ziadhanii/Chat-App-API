@@ -1,8 +1,12 @@
+using ChatApp.Persistence.Shared;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
 ApplicationServiceRegistration.ConfigureApplicationServices(builder.Services);
+
+PersistenceRegistration.ConfigurePersistenceServices(builder.Services);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
