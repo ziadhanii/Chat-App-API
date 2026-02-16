@@ -1,7 +1,4 @@
-﻿using ChatApp.Application.Contract;
-using Microsoft.AspNetCore.Http;
-
-namespace ChatApp.Persistence.Repositories;
+﻿namespace ChatApp.Persistence.Repositories;
 
 public class GenericRepository<T>(
     ApplicationDbContext context,

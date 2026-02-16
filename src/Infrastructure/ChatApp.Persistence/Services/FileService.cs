@@ -1,7 +1,4 @@
-﻿using ChatApp.Application.Contract;
-using Microsoft.AspNetCore.Http;
-
-namespace ChatApp.Persistence.Services;
+﻿namespace ChatApp.Persistence.Services;
 
 public class FileService : IFileService
 {

@@ -4,3 +4,8 @@ global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
 global using ChatApp.Domain.Entities;
+global using ChatApp.Application.Contract;
+global using ChatApp.Persistence.Repositories;
+global using ChatApp.Persistence.Services;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.AspNetCore.Http;

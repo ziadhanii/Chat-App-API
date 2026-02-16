@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace ChatApp.Application.Contract;
+﻿namespace ChatApp.Application.Contract;
 
 public interface IGenericRepository<T> where T : class
 {

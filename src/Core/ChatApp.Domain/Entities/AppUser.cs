@@ -1,6 +1,6 @@
 ﻿namespace ChatApp.Domain.Entities;
 
-public abstract class AppUser : IdentityUser<int>
+public class AppUser : IdentityUser<int>
 {
     public string? ImageUrl { get; set; }
 
@@ -15,4 +15,10 @@ public abstract class AppUser : IdentityUser<int>
     public string? Country { get; set; }
 
     public string? Interests { get; set; }
+
+    public virtual ICollection<Message> SentMessages { get; set; }
+        = new List<Message>();
+
+    public virtual ICollection<BlockedUser> BlockedUsers { get; set; }
+        = new List<BlockedUser>();
 }
