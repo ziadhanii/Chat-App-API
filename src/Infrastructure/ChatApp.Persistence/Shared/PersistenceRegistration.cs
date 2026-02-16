@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ChatApp.Application.Contract;
+using ChatApp.Persistence.Repositories;
+using ChatApp.Persistence.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace ChatApp.Persistence.Shared;
 
@@ -21,5 +24,8 @@ public static class PersistenceRegistration
             })
             .AddDefaultTokenProviders()
             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+        services.AddScoped<IFileService, FileService>();
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
     }
 }

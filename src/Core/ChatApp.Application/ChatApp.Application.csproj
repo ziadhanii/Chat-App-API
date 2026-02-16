@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="14.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.3.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\Messages\Handler\Command\" />

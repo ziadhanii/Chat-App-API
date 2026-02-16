@@ -7,6 +7,7 @@ builder.Services.ConfigureApplicationServices();
 builder.Services.ConfigurePersistenceServices(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
