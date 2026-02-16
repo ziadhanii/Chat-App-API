@@ -1,16 +1,23 @@
-﻿namespace ChatApp.Persistence.Shared;
+﻿using Microsoft.Extensions.Configuration;
+
+namespace ChatApp.Persistence.Shared;
 
 public static class PersistenceRegistration
 {
-    public static void ConfigurePersistenceServices(this IServiceCollection services)
+    public static void ConfigurePersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddIdentity<AppUser, IdentityRole<int>>(op =>
+        services.AddDbContext<ApplicationDbContext>(options =>
+        {
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+        });
+
+        services.AddIdentity<AppUser, IdentityRole<int>>(options =>
             {
-                op.Password.RequireNonAlphanumeric = true;
-                op.Password.RequireLowercase = true;
-                op.Password.RequireUppercase = true;
-                op.Password.RequireDigit = true;
-                op.SignIn.RequireConfirmedEmail = false;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireDigit = true;
+                options.SignIn.RequireConfirmedEmail = false;
             })
             .AddDefaultTokenProviders()
             .AddEntityFrameworkStores<ApplicationDbContext>();

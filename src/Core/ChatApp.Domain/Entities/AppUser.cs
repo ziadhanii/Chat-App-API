@@ -1,6 +1,6 @@
 ﻿namespace ChatApp.Domain.Entities;
 
-public class AppUser : IdentityUser<int>
+public abstract class AppUser : IdentityUser<int>
 {
     public string? ImageUrl { get; set; }
 

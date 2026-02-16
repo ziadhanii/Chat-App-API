@@ -4,7 +4,7 @@ builder.Services.AddControllers();
 
 builder.Services.ConfigureApplicationServices();
 
-builder.Services.ConfigurePersistenceServices();
+builder.Services.ConfigurePersistenceServices(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
