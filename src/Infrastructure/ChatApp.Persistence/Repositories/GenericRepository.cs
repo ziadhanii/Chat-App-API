@@ -1,8 +1,6 @@
 ﻿namespace ChatApp.Persistence.Repositories;
 
-public class GenericRepository<T>(
-    ApplicationDbContext context,
-    IFileService fileService) : IGenericRepository<T>
+public class GenericRepository<T>(ApplicationDbContext context) : IGenericRepository<T>
     where T : class
 {
     public async Task<IReadOnlyList<T>> GetAllAsync(
@@ -25,37 +23,17 @@ public class GenericRepository<T>(
 
     public async Task AddAsync(
         T entity,
-        IFormFile? file = default,
-        string? email = default,
         CancellationToken cancellationToken = default)
     {
-        if (file is not null && file.Length > 0 && !string.IsNullOrWhiteSpace(email))
-        {
-            var filePath = await fileService.SaveImageAsync(file, email);
-
-            if (!string.IsNullOrWhiteSpace(filePath))
-            {
-                var imageProperty = typeof(T).GetProperty("ImageUrl");
-
-                if (imageProperty != null && imageProperty.CanWrite)
-                {
-                    imageProperty.SetValue(entity, filePath);
-                }
-            }
-        }
-
         await context.Set<T>().AddAsync(entity, cancellationToken);
-
-        await context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task UpdateAsync(
+    public Task UpdateAsync(
         T entity,
         CancellationToken cancellationToken = default)
     {
         context.Set<T>().Update(entity);
-
-        await context.SaveChangesAsync(cancellationToken);
+        return Task.CompletedTask;
     }
 
     public async Task DeleteAsync(
@@ -67,12 +45,10 @@ public class GenericRepository<T>(
                 m => EF.Property<int>(m, "Id") == id,
                 cancellationToken);
 
-        if (entity is null)
-            return;
-
-        context.Set<T>().Remove(entity);
-
-        await context.SaveChangesAsync(cancellationToken);
+        if (entity is not null)
+        {
+            context.Set<T>().Remove(entity);
+        }
     }
 
     public async Task<bool> ExistAsync(

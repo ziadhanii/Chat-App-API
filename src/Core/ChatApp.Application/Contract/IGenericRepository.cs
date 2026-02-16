@@ -11,8 +11,6 @@ public interface IGenericRepository<T> where T : class
 
     Task AddAsync(
         T entity,
-        IFormFile? file = default,
-        string? email = default,
         CancellationToken cancellationToken = default);
 
     Task<bool> ExistAsync(

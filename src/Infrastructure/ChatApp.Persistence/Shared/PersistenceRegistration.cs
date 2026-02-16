@@ -21,6 +21,6 @@ public static class PersistenceRegistration
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
         services.AddScoped<IFileService, FileService>();
-        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
 }
