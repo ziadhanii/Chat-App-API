@@ -16,9 +16,7 @@ public class AppUser : IdentityUser<int>
 
     public string? Interests { get; set; }
 
-    public virtual ICollection<Message> SentMessages { get; set; }
-        = new List<Message>();
+    public ICollection<Message> SentMessages { get; set; } = [];
 
-    public virtual ICollection<BlockedUser> BlockedUsers { get; set; }
-        = new List<BlockedUser>();
+    public ICollection<BlockedUser> BlockedUsers { get; set; } = [];
 }

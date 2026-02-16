@@ -9,3 +9,4 @@ global using ChatApp.Persistence.Repositories;
 global using ChatApp.Persistence.Services;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.AspNetCore.Http;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
