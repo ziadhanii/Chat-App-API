@@ -7,6 +7,11 @@
 .vscode/
 .idea/
 
+.wwwroot/
+*.wwwroot/
+.images/
+*.images/
+
 *.vs/
 *.vscode/
 *.idea/

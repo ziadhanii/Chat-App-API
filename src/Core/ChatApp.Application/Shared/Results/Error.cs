@@ -1,4 +1,4 @@
-namespace ChatApp.Application.Shared.Abstractions;
+namespace ChatApp.Application.Shared.Results;
 
 public record Error(
     string Code,

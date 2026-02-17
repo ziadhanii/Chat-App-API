@@ -1,64 +1,52 @@
-﻿namespace ChatApp.Persistence.Services;
+namespace ChatApp.Persistence.Services;
 
-public class FileService : IFileService
+public class FileService(IHostEnvironment hostEnvironment, IHttpContextAccessor httpContextAccessor) : IFileService
 {
-    private readonly string _rootPath;
+    private readonly string _imagesPath = Path.Combine(hostEnvironment.ContentRootPath, "wwwroot", "images");
 
-    public FileService()
+    public async Task<string> UploadImageAsync(IFormFile image, CancellationToken cancellationToken = default)
     {
-        _rootPath = Path.Combine(
-            Directory.GetCurrentDirectory(),
-            "wwwroot",
-            "images");
+        Directory.CreateDirectory(_imagesPath);
 
-        Directory.CreateDirectory(_rootPath);
+        var fileName = $"{Guid.NewGuid()}{Path.GetExtension(image.FileName)}";
+
+        var filePath = Path.Combine(_imagesPath, fileName);
+
+        await using var stream = File.Create(filePath);
+
+        await image.CopyToAsync(stream, cancellationToken);
+
+        var request = httpContextAccessor.HttpContext?.Request;
+
+        var baseUrl = $"{request?.Scheme}://{request?.Host}";
+
+        return $"{baseUrl}/images/{fileName}";
     }
 
-    public async Task<string> SaveImageAsync(IFormFile file, string email)
+    public Task<bool> DeleteImageAsync(string imageUrl, CancellationToken cancellationToken = default)
     {
-        if (file == null || file.Length == 0)
-            throw new ArgumentException("Invalid file");
+        try
+        {
+            if (string.IsNullOrWhiteSpace(imageUrl))
+                return Task.FromResult(false);
 
-        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".webp" };
+            var uri = new Uri(imageUrl);
 
-        var extension = Path.GetExtension(file.FileName).ToLower();
+            var fileName = Path.GetFileName(uri.LocalPath);
 
-        if (!allowedExtensions.Contains(extension))
-            throw new Exception("Invalid image format");
+            var filePath = Path.Combine(_imagesPath, fileName);
 
-        var safeEmail = email.Replace("@", "_").Replace(".", "_");
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+                return Task.FromResult(true);
+            }
 
-        var fileName = $"{safeEmail}_{Guid.NewGuid()}{extension}";
-
-        var fullPath = Path.Combine(_rootPath, fileName);
-
-        await using var stream = new FileStream(
-            fullPath,
-            FileMode.Create,
-            FileAccess.Write,
-            FileShare.None);
-
-        await file.CopyToAsync(stream);
-
-        return Path.Combine("images", fileName)
-            .Replace("\\", "/");
-    }
-
-    public async Task<bool> DeleteImageAsync(string path)
-    {
-        if (string.IsNullOrWhiteSpace(path))
-            return false;
-
-        var fullPath = Path.Combine(
-            Directory.GetCurrentDirectory(),
-            "wwwroot",
-            path);
-
-        if (!File.Exists(fullPath))
-            return false;
-
-        await Task.Run(() => File.Delete(fullPath));
-
-        return true;
+            return Task.FromResult(false);
+        }
+        catch
+        {
+            return Task.FromResult(false);
+        }
     }
 }

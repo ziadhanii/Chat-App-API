@@ -1,4 +1,4 @@
-﻿namespace ChatApp.Application.Contract;
+﻿namespace ChatApp.Application.Interfaces;
 
 public interface IGenericRepository<T> where T : class
 {

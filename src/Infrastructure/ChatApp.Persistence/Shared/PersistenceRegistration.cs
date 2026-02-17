@@ -20,6 +20,8 @@ public static class PersistenceRegistration
             .AddDefaultTokenProviders()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
+        services.AddHttpContextAccessor();
+
         services.AddScoped<IFileService, FileService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }

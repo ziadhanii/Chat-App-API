@@ -1,4 +1,6 @@
-﻿namespace ChatApp.Persistence.Repositories;
+﻿using ChatApp.Application.Interfaces;
+
+namespace ChatApp.Persistence.Repositories;
 
 public class GenericRepository<T>(ApplicationDbContext context) : IGenericRepository<T>
     where T : class

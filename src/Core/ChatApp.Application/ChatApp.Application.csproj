@@ -5,14 +5,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
     <PackageReference Include="MediatR" Version="14.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.9" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Contracts\" />
     <Folder Include="Features\Messages\Handler\Command\" />
     <Folder Include="Features\Messages\Handler\Query\" />
     <Folder Include="Features\Messages\Request\Command\" />
     <Folder Include="Features\Messages\Request\Query\" />
+    <Folder Include="Features\Users\Request\Command\" />
+    <Folder Include="Features\Users\Request\Query\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChatApp.Domain\ChatApp.Domain.csproj" />

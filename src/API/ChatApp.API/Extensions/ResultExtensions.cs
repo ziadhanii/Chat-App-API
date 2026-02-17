@@ -1,6 +1,3 @@
-using ChatApp.Application.Shared.Abstractions;
-using Microsoft.AspNetCore.Mvc;
-
 namespace ChatApp.API.Extensions;
 
 public static class ResultExtensions

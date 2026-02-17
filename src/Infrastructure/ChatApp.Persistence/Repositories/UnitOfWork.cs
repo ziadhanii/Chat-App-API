@@ -1,3 +1,5 @@
+using ChatApp.Application.Interfaces;
+
 namespace ChatApp.Persistence.Repositories;
 
 public class UnitOfWork : IUnitOfWork

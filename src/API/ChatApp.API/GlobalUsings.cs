@@ -1,3 +1,10 @@
 ﻿global using Microsoft.OpenApi;
 global using ChatApp.Application.Shared;
 global using ChatApp.Persistence.Shared;
+global using Microsoft.AspNetCore.Mvc;
+global using MediatR;
+global using ChatApp.API.Extensions;
+global using System.Text.Json.Serialization;
+global using ChatApp.Application.Features.Users.Handler.Command;
+global using ChatApp.Application.Features.Users.Request;
+global using ChatApp.Application.Shared.Results;
