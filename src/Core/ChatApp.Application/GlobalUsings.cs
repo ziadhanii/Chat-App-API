@@ -11,6 +11,7 @@ global using Microsoft.AspNetCore.Identity;
 global using ChatApp.Application.Features.Users.Handler.Command;
 global using Mapster;
 global using FluentValidation;
+global using FluentValidation.AspNetCore;
 global using ChatApp.Application.Helpers;
 global using ChatApp.Application.Shared.Errors;
 global using System.Reflection;

@@ -2,27 +2,48 @@
 
 public static class ApplicationServiceRegistration
 {
-    public static IServiceCollection ConfigureApplicationServices(
-        this IServiceCollection services)
+    extension(IServiceCollection services)
     {
-        // Register MediatR
-        services.AddMediatR(cfg =>
+        public IServiceCollection ConfigureApplicationServices()
         {
-            cfg.RegisterServicesFromAssembly(
+            services.RegisterMediatR();
+            services.RegisterFluentValidation();
+            services.RegisterMapster();
+
+            return services;
+        }
+
+        private IServiceCollection RegisterMediatR()
+        {
+            services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(
+                    typeof(ApplicationServiceRegistration).Assembly);
+            });
+
+            return services;
+        }
+
+        private IServiceCollection RegisterFluentValidation()
+        {
+            services
+                .AddFluentValidationAutoValidation()
+                .AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+
+            return services;
+        }
+
+        private IServiceCollection RegisterMapster()
+        {
+            var mappingConfig = new TypeAdapterConfig();
+
+            mappingConfig.Scan(
                 typeof(ApplicationServiceRegistration).Assembly);
-        });
 
-        // Register Mapster with isolated config instance
+            services.AddSingleton(mappingConfig);
+            services.AddScoped<IMapper, ServiceMapper>();
 
-        var mappingConfig = new TypeAdapterConfig();
-
-        mappingConfig.Scan(
-            typeof(ApplicationServiceRegistration).Assembly);
-
-        services.AddSingleton(mappingConfig);
-
-        services.AddScoped<IMapper, ServiceMapper>();
-
-        return services;
+            return services;
+        }
     }
 }

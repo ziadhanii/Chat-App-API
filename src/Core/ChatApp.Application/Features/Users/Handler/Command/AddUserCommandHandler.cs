@@ -23,7 +23,7 @@ public class AddUserCommandHandler(
         string? imageUrl = null;
         if (request.Image is not null)
         {
-            imageUrl = await fileService.UploadImageAsync(request.Image, cancellationToken);
+            imageUrl = await fileService.UploadImageAsync(request.Image, request.Email, cancellationToken);
         }
 
         var user = mapper.Map<AppUser>(request);
