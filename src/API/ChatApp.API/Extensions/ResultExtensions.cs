@@ -1,4 +1,4 @@
-using ChatApp.Application.Shared.Results;
+using ChatApp.Application.Shared.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChatApp.API.Extensions;
