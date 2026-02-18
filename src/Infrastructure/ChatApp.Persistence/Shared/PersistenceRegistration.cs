@@ -22,6 +22,7 @@ public static class PersistenceRegistration
 
         services.AddHttpContextAccessor();
 
+        services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IFileService, FileService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }

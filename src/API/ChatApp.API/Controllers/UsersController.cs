@@ -1,13 +1,17 @@
+using ChatApp.Application.Features.Users.Request.Query;
+
 namespace ChatApp.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class UsersController(IMediator mediator) : ControllerBase
 {
-    [HttpPost("")]
-    public async Task<IActionResult> CreateUser([FromForm] AddUserCommandRequest command)
+    [HttpPost]
+    public async Task<IActionResult> CreateUser(
+        [FromForm] AddUserCommandRequest command,
+        CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(command);
+        var result = await mediator.Send(command, cancellationToken);
 
         return result.IsFailure
             ? result.ToProblem()
@@ -18,9 +22,16 @@ public class UsersController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetUser(string id)
+    public async Task<IActionResult> GetUser(
+        [FromRoute] int id,
+        CancellationToken cancellationToken)
     {
-        // TODO: Implement GetUserQuery
-        return Ok(new { message = "GetUser endpoint - Not implemented yet", userId = id });
+        var result = await mediator.Send(
+            new GetUserInfoQuery(id),
+            cancellationToken);
+
+        return result.IsFailure
+            ? result.ToProblem()
+            : Ok(result.Value);
     }
 }

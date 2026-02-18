@@ -17,6 +17,7 @@ public class FileService(IHostEnvironment hostEnvironment, IHttpContextAccessor 
         var filePath = Path.Combine(userFolderPath, fileName);
 
         await using var stream = File.Create(filePath);
+
         await image.CopyToAsync(stream, cancellationToken);
 
         var request = httpContextAccessor.HttpContext?.Request;

@@ -20,7 +20,6 @@
     <Folder Include="Features\Messages\Request\Command\" />
     <Folder Include="Features\Messages\Request\Query\" />
     <Folder Include="Features\Users\Request\Command\" />
-    <Folder Include="Features\Users\Request\Query\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChatApp.Domain\ChatApp.Domain.csproj" />
