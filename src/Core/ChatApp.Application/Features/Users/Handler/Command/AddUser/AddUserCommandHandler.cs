@@ -1,4 +1,4 @@
-namespace ChatApp.Application.Features.Users.Handler.Command;
+namespace ChatApp.Application.Features.Users.Handler.Command.AddUser;
 
 public class AddUserCommandHandler(
     UserManager<AppUser> userManager,

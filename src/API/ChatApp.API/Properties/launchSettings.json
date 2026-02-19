@@ -6,7 +6,11 @@
       "launchBrowser": false,
       "launchUrl": "swagger/index.html",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "Jwt:Key": "This is a secret key for JWT token generation that must be at least 32 characters long",
+        "Jwt:Issuer": "https://localhost:5001",
+        "Jwt:Audience": "ChatAppAPIUsers",
+        "Jwt:ExpiryMinutes": 60
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:5001;"

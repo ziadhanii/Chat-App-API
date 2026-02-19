@@ -14,12 +14,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.9" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Contracts\" />
     <Folder Include="Features\Messages\Handler\Command\" />
     <Folder Include="Features\Messages\Handler\Query\" />
     <Folder Include="Features\Messages\Request\Command\" />
     <Folder Include="Features\Messages\Request\Query\" />
-    <Folder Include="Features\Users\Request\Command\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChatApp.Domain\ChatApp.Domain.csproj" />

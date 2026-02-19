@@ -1,4 +1,6 @@
-﻿namespace ChatApp.Persistence.Shared;
+﻿using ChatApp.Persistence.Options;
+
+namespace ChatApp.Persistence.Shared;
 
 public static class PersistenceRegistration
 {
@@ -22,6 +24,8 @@ public static class PersistenceRegistration
 
         services.AddHttpContextAccessor();
 
+        services.Configure<JwtOptions>(configuration.GetSection("Jwt"));
+        services.AddScoped<IJwtProvider, JwtProvider>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IFileService, FileService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
